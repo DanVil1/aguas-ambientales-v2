@@ -115,7 +115,7 @@ export default function Navbar({ onSectionChange }) {
               <Button
                 key={section.id}
                 onClick={() => handleSectionClick(section.id)}
-                sx={{ my: 2, color: 'black', display: 'block', mx: 8 }}
+                sx={{ my: 2, color: 'black', display: 'block', mx: 6 }}
               >
                 {section.label}
               </Button>
