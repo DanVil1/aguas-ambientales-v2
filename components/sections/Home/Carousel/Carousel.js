@@ -1,20 +1,46 @@
 // components/sections/Home/Carousel.js
 import React from 'react';
 import Slider from 'react-slick';
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box, Typography, IconButton, Button } from '@mui/material';
 import { keyframes } from '@emotion/react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 // Import slick-carousel CSS
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-// Keyframe for slide-up animation
-const slideUp = keyframes`
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-`;
+// This component handles the title animation when its slide is active.
+const SlideTitle = ({ children, isActive }) => {
+  const [animate, setAnimate] = React.useState(false);
+  React.useEffect(() => {
+    if (isActive) {
+      // Delay slightly to ensure the slide is fully active.
+      const timeout = setTimeout(() => setAnimate(true), 100);
+      return () => clearTimeout(timeout);
+    } else {
+      // Reset the state when slide becomes inactive.
+      setAnimate(false);
+    }
+  }, [isActive]);
+  return (
+    <Typography
+      variant="h4"
+      component="h2"
+      sx={{
+        color: '#0f3b68',
+        fontWeight: '600',
+        fontSize: '40px',
+        opacity: animate ? 1 : 0,
+        transform: animate ? 'translateY(0)' : 'translateY(50px)',
+        transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+      }}
+    >
+      {children}
+    </Typography>
+  );
+};
 
 // Custom Next Arrow component
 function NextArrow(props) {
@@ -61,6 +87,7 @@ function PrevArrow(props) {
 }
 
 const Carousel = () => {
+  const [activeSlide, setActiveSlide] = React.useState(0);
   const settings = {
     dots: true,
     arrows: true,
@@ -72,9 +99,11 @@ const Carousel = () => {
     autoplaySpeed: 6000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    afterChange: (current) => setActiveSlide(current),
   };
 
   return (
+    // Full-width container using a CSS trick to span the entire viewport width
     <Box sx={{ width: '100vw', ml: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
       <Slider {...settings}>
         {/* Slide 1 */}
@@ -82,14 +111,11 @@ const Carousel = () => {
           <Box
             sx={{
               width: '100%',
-              height: { xs: '400px', md: '800px' },
+              height: { xs: '652px', md: '637px' },
               position: 'relative',
-              backgroundImage: 'url(/images/carousel/water.webp)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
             }}
           >
-            {/* Overlay to dim the background image */}
+            {/* Background Image with 50% opacity */}
             <Box
               sx={{
                 position: 'absolute',
@@ -97,41 +123,59 @@ const Carousel = () => {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                pointerEvents: 'none',
+                backgroundImage: 'url(/images/carousel/water.webp)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'opacity(0.5)',
+                zIndex: 0,
               }}
             />
-            {/* Title Box on the Left */}
+            {/* Title Box in the Top Left */}
             <Box
               sx={{
                 position: 'absolute',
+                top: { xs: 16, md: 32 },
                 left: { xs: 16, md: 32 },
-                bottom: { xs: 16, md: 32 },
-                maxWidth: { xs: '80%', md: '40%' },
+                p: 7,
+                maxWidth: { xs: '80%', md: '60%' },
                 textAlign: 'left',
+                zIndex: 1,
               }}
             >
-              <Typography
-                variant="h4"
-                component="h2"
-                sx={{
-                  color: '#0f3b68',
-                  mb: 1,
-                  animation: `${slideUp} 1s ease-out`,
-                }}
-              >
+              <SlideTitle isActive={activeSlide === 0}>
                 ESCENARIOS DE PRODUCCIÓN, PURIFICACIÓN, REGENERACIÓN Y RECICLAJE DE AGUAS
-              </Typography>
-              <Typography
-                variant="h6"
-                component="p"
-                sx={{
-                  color: '#0f3b68',
-                  animation: `${slideUp} 1s ease-out`,
-                }}
-              >
-                AWA
-              </Typography>
+                {/* List of services */}
+                <Box sx={{ mt: 2, pl: 2 }}>
+                  <ul style={{ margin: 0, paddingLeft: '1.2rem', listStyle: 'none', color: '#0f3b68' }}>
+                    {["AWA", "VÓRTICE", "PROYECTOS ESPECIALES"].map((item, index) => (
+                      <li key={index} style={{ display: 'flex', alignItems: 'center', fontSize: '25.6px', fontWeight: '600', lineHeight: 1.4, marginBottom: '4px' }}>
+                        <ChevronRightIcon sx={{ fontSize: '1rem', mr: 0.5 }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </Box>
+                {/* "Ver más" Button */}
+                <Box sx={{ display: 'flex' }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      mt: 2,
+                      backgroundColor: '#0f3b68',
+                      color: '#fff',
+                      borderRadius: '9999px',
+                      px: 3,
+                      py: 1,
+                      textTransform: 'none',
+                      boxShadow: 'none',
+                      fontWeight: '600',
+                      '&:hover': { backgroundColor: '#fff', color: '#0f3b68' },
+                    }}
+                  >
+                    Ver más
+                  </Button>
+                </Box>
+              </SlideTitle>
             </Box>
           </Box>
         </div>
@@ -140,11 +184,8 @@ const Carousel = () => {
           <Box
             sx={{
               width: '100%',
-              height: { xs: '400px', md: '800px' },
+              height: { xs: '652px', md: '637px' },
               position: 'relative',
-              backgroundImage: 'url(/images/carousel/wind.webp)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
             }}
           >
             <Box
@@ -154,29 +195,56 @@ const Carousel = () => {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                pointerEvents: 'none',
+                backgroundImage: 'url(/images/carousel/wind.webp)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'opacity(0.5)',
+                zIndex: 0,
               }}
             />
             <Box
               sx={{
                 position: 'absolute',
+                top: { xs: 16, md: 32 },
                 left: { xs: 16, md: 32 },
-                bottom: { xs: 16, md: 32 },
-                maxWidth: { xs: '80%', md: '40%' },
+                p: 7,
+                maxWidth: { xs: '80%', md: '60%' },
                 textAlign: 'left',
+                zIndex: 1,
               }}
             >
-              <Typography
-                variant="h4"
-                component="h2"
-                sx={{
-                  color: '#0f3b68',
-                  animation: `${slideUp} 1s ease-out`,
-                }}
-              >
+              <SlideTitle isActive={activeSlide === 1}>
                 ESTACIONES DE GENERACIÓN Y EXPLOTACIÓN DE ENERGÍAS ALTERNATIVAS LIMPIAS EGEAL
-              </Typography>
+                <Box sx={{ mt: 2, pl: 2 }}>
+                <ul style={{ margin: 0, paddingLeft: '1.2rem', listStyle: 'none', color: '#0f3b68' }}>
+                  {["SOLAR", "EÓLICA", "MICRO HIDRÁULICA", "HIDRÓGENO VERDE H2V", "HÍBRIDA"].map((item, index) => (
+                    <li key={index} style={{ display: 'flex', alignItems: 'center', fontSize: '25.6px', fontWeight: '600', lineHeight: 1.4, marginBottom: '4px' }}>
+                      <ChevronRightIcon sx={{ fontSize: '1rem', mr: 0.5 }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                </Box>
+                <Box sx={{ display: 'flex' }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      mt: 2,
+                      backgroundColor: '#0f3b68',
+                      color: '#fff',
+                      borderRadius: '9999px',
+                      px: 3,
+                      py: 1,
+                      textTransform: 'none',
+                      boxShadow: 'none',
+                      fontWeight: '600',
+                      '&:hover': { backgroundColor: '#fff', color: '#0f3b68' },
+                    }}
+                  >
+                    Ver más
+                  </Button>
+                </Box>
+              </SlideTitle>
             </Box>
           </Box>
         </div>

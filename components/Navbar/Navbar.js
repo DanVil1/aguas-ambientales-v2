@@ -37,7 +37,7 @@ export default function Navbar({ onSectionChange }) {
   };
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" sx={{ backgroundColor: '#fff', boxShadow: 3 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Desktop Site Title on Left */}
