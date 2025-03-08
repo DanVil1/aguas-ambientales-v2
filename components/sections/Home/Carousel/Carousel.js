@@ -31,7 +31,7 @@ const SlideTitle = ({ children, isActive }) => {
       sx={{
         color: '#0f3b68',
         fontWeight: '600',
-        fontSize: '40px',
+        fontSize: { xs: '28px', md: '40px' },
         opacity: animate ? 1 : 0,
         transform: animate ? 'translateY(0)' : 'translateY(50px)',
         transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
@@ -134,7 +134,7 @@ const Carousel = () => {
             <Box
               sx={{
                 position: 'absolute',
-                top: { xs: 16, md: 32 },
+                top: { xs: 1, md: 1 },
                 left: { xs: 16, md: 32 },
                 p: 7,
                 maxWidth: { xs: '80%', md: '60%' },
@@ -205,7 +205,7 @@ const Carousel = () => {
             <Box
               sx={{
                 position: 'absolute',
-                top: { xs: 16, md: 32 },
+                top: { xs: 1, md: 1 },
                 left: { xs: 16, md: 32 },
                 p: 7,
                 maxWidth: { xs: '80%', md: '60%' },

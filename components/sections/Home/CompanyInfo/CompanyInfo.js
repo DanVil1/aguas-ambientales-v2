@@ -19,11 +19,11 @@ const CompanyInfo = () => {
   ];
 
   return (
-    <Box sx={{ p: { xs: 2, md: 4 } }}>
+    <Box sx={{ pl: '80px', pr: '80px', pt: '20px' }}>
       {/* Company description with bolded company name */}
       <Typography
         variant="body1"
-        sx={{ color: '#0f3b68', fontSize: '18px', lineHeight: 1.6, mb: 3 }}
+        sx={{ color: '#0f3b68', fontSize: '18px', lineHeight: 1.6, mb: 3, textAlign: 'justify' }}
       >
         <strong>S</strong>omos <strong>{boldText}</strong>{restText}
       </Typography>
@@ -33,11 +33,21 @@ const CompanyInfo = () => {
           const firstLetter = point.charAt(0);
           const restOfText = point.slice(1);
           return (
-            <ListItem key={index} disablePadding sx={{ alignItems: 'center', mb: 1 }}>
+            <ListItem
+              key={index}
+              disablePadding
+              sx={{ display: 'flex', alignItems: 'baseline', mb: 1 }}
+            >
               <ListItemIcon
-                sx={{ minWidth: 'auto', mr: 1, color: '#0f3b68', alignSelf: 'center' }}
+                sx={{
+                  minWidth: 'auto',
+                  mr: 1,
+                  color: '#0f3b68',
+                  alignSelf: 'baseline',
+                  mt: '4px', // adjust this value as needed
+                }}
               >
-                <CheckIcon fontSize="small" sx={{ fontWeight: 500 }} />
+                <CheckIcon fontSize="small" />
               </ListItemIcon>
               <ListItemText
                 primary={
