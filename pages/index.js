@@ -16,8 +16,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Your Site Title</title>
-        <meta name="description" content="Your site description for SEO" />
+        <title>AGUAS AMBIENTALES SAS</title>
+        <meta name="description" content="Aguas Ambientales SAS" />
       </Head>
       <Navbar onSectionChange={setActiveSection} />
 

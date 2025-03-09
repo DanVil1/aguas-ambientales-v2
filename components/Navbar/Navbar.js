@@ -13,11 +13,11 @@ import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/material/styles';
 
 const sections = [
-  { label: 'Home', id: 'home' },
-  { label: 'Products', id: 'products' },
-  { label: 'Services', id: 'services' },
-  { label: 'Solution', id: 'solutions' },
-  { label: 'Contact', id: 'contact' },
+  { label: 'INICIO', id: 'home' },
+  { label: 'PRODUCTOS', id: 'products' },
+  { label: 'SERVICIOS', id: 'services' },
+  { label: 'SOLUCIONES', id: 'solutions' },
+  { label: 'CONTACTO', id: 'contact' },
 ];
 
 export default function Navbar({ onSectionChange }) {
@@ -47,10 +47,16 @@ export default function Navbar({ onSectionChange }) {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, color: theme.palette.primary.main }}
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              color: theme.palette.primary.main,
+              fontFamily: 'Ultra Regular', // Use the custom font
+            }}
           >
-            My Website
+            AGUAS AMBIENTALES SAS
           </Typography>
+
 
           {/* Mobile Header: Title on left, Menu icon on right */}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', width: '100%' }}>
@@ -58,9 +64,9 @@ export default function Navbar({ onSectionChange }) {
               variant="h6"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, color: theme.palette.primary.main }}
+              sx={{ flexGrow: 1, color: theme.palette.primary.main, fontFamily: 'Ultra Regular', fontSize: { xs: '.8rem', md: 'inherit' } }}
             >
-              My Website
+              AGUAS AMBIENTALES SAS
             </Typography>
             <IconButton
               size="large"
@@ -95,7 +101,7 @@ export default function Navbar({ onSectionChange }) {
                   key={section.id}
                   onClick={() => handleSectionClick(section.id)}
                 >
-                  <Typography textAlign="center" sx={{ color: theme.palette.primary.main }}>
+                  <Typography textAlign="center" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>
                     {section.label}
                   </Typography>
                 </MenuItem>
@@ -115,7 +121,7 @@ export default function Navbar({ onSectionChange }) {
               <Button
                 key={section.id}
                 onClick={() => handleSectionClick(section.id)}
-                sx={{ my: 2, color: 'black', display: 'block', mx: 6 }}
+                sx={{ my: 2, color: 'black', display: 'block', mx: { md: 1, lg: 4 }, fontWeight: 'bold' }}
               >
                 {section.label}
               </Button>

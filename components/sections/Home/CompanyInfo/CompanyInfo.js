@@ -22,7 +22,7 @@ const CompanyInfo = () => {
   ];
 
   return (
-    <Box sx={{ pl: '80px', pr: '80px', pt: '20px' }}>
+    <Box sx={{ pl: { xs: '16px', md: '80px' }, pr: { xs: '16px', md: '80px' }, pt: '20px' }}>
       {/* Company description with bolded company name */}
       <Typography
         variant="body1"
@@ -68,11 +68,10 @@ const CompanyInfo = () => {
               <ListItemText
                 primary={
                   <Typography sx={{ color: theme.palette.black.main, fontSize: '18px', fontWeight: 500 }}>
-                          <Box component="span" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>
-                          {firstLetter}
-                          </Box>
-                          {restOfText}
-
+                    <Box component="span" sx={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>
+                    {firstLetter}
+                    </Box>
+                    {restOfText}
                   </Typography>
                 }
                 disableTypography
