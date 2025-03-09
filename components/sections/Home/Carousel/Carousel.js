@@ -2,7 +2,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import { Box, Typography, IconButton, Button } from '@mui/material';
-import { keyframes } from '@emotion/react';
+import { useTheme } from '@mui/material/styles';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -29,7 +29,7 @@ const SlideTitle = ({ children, isActive }) => {
       variant="h4"
       component="h2"
       sx={{
-        color: '#0f3b68',
+        color: (theme) => theme.palette.primary.main,
         fontWeight: '600',
         fontSize: { xs: '28px', md: '40px' },
         opacity: animate ? 1 : 0,
@@ -44,7 +44,10 @@ const SlideTitle = ({ children, isActive }) => {
 
 // Custom Next Arrow component
 function NextArrow(props) {
+
   const { onClick } = props;
+  const theme = useTheme();
+
   return (
     <IconButton
       onClick={onClick}
@@ -53,7 +56,7 @@ function NextArrow(props) {
         right: 16,
         top: '50%',
         transform: 'translateY(-50%)',
-        color: '#0f3b68',
+        color: theme.palette.primary.main,
         backgroundColor: 'rgba(255,255,255,0.7)',
         zIndex: 2,
         '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' },
@@ -66,7 +69,10 @@ function NextArrow(props) {
 
 // Custom Prev Arrow component
 function PrevArrow(props) {
+
   const { onClick } = props;
+  const theme = useTheme();
+
   return (
     <IconButton
       onClick={onClick}
@@ -75,7 +81,7 @@ function PrevArrow(props) {
         left: 16,
         top: '50%',
         transform: 'translateY(-50%)',
-        color: '#0f3b68',
+        color: theme.palette.primary.main,
         backgroundColor: 'rgba(255,255,255,0.7)',
         zIndex: 2,
         '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' },
@@ -87,7 +93,9 @@ function PrevArrow(props) {
 }
 
 const Carousel = () => {
+
   const [activeSlide, setActiveSlide] = React.useState(0);
+  const theme = useTheme();
   const settings = {
     dots: true,
     arrows: true,
@@ -146,7 +154,7 @@ const Carousel = () => {
                 ESCENARIOS DE PRODUCCIÓN, PURIFICACIÓN, REGENERACIÓN Y RECICLAJE DE AGUAS
                 {/* List of services */}
                 <Box sx={{ mt: 2, pl: 2 }}>
-                  <ul style={{ margin: 0, paddingLeft: '1.2rem', listStyle: 'none', color: '#0f3b68' }}>
+                  <ul style={{ margin: 0, paddingLeft: '1.2rem', listStyle: 'none', color: theme.palette.primary.main }}>
                     {["AWA", "VÓRTICE", "PROYECTOS ESPECIALES"].map((item, index) => (
                       <li key={index} style={{ display: 'flex', alignItems: 'center', fontSize: '25.6px', fontWeight: '600', lineHeight: 1.4, marginBottom: '4px' }}>
                         <ChevronRightIcon sx={{ fontSize: '1rem', mr: 0.5 }} />
@@ -161,7 +169,7 @@ const Carousel = () => {
                     variant="contained"
                     sx={{
                       mt: 2,
-                      backgroundColor: '#0f3b68',
+                      backgroundColor: theme.palette.primary.main,
                       color: '#fff',
                       borderRadius: '9999px',
                       px: 3,
@@ -169,7 +177,7 @@ const Carousel = () => {
                       textTransform: 'none',
                       boxShadow: 'none',
                       fontWeight: '600',
-                      '&:hover': { backgroundColor: '#fff', color: '#0f3b68' },
+                      '&:hover': { backgroundColor: '#fff', color: theme.palette.primary.main },
                     }}
                   >
                     Ver más
@@ -216,7 +224,7 @@ const Carousel = () => {
               <SlideTitle isActive={activeSlide === 1}>
                 ESTACIONES DE GENERACIÓN Y EXPLOTACIÓN DE ENERGÍAS ALTERNATIVAS LIMPIAS EGEAL
                 <Box sx={{ mt: 2, pl: 2 }}>
-                <ul style={{ margin: 0, paddingLeft: '1.2rem', listStyle: 'none', color: '#0f3b68' }}>
+                <ul style={{ margin: 0, paddingLeft: '1.2rem', listStyle: 'none', color: theme.palette.primary.main }}>
                   {["SOLAR", "EÓLICA", "MICRO HIDRÁULICA", "HIDRÓGENO VERDE H2V", "HÍBRIDA"].map((item, index) => (
                     <li key={index} style={{ display: 'flex', alignItems: 'center', fontSize: '25.6px', fontWeight: '600', lineHeight: 1.4, marginBottom: '4px' }}>
                       <ChevronRightIcon sx={{ fontSize: '1rem', mr: 0.5 }} />
@@ -230,7 +238,7 @@ const Carousel = () => {
                     variant="contained"
                     sx={{
                       mt: 2,
-                      backgroundColor: '#0f3b68',
+                      backgroundColor: theme.palette.primary.main,
                       color: '#fff',
                       borderRadius: '9999px',
                       px: 3,
@@ -238,7 +246,7 @@ const Carousel = () => {
                       textTransform: 'none',
                       boxShadow: 'none',
                       fontWeight: '600',
-                      '&:hover': { backgroundColor: '#fff', color: '#0f3b68' },
+                      '&:hover': { backgroundColor: '#fff', color: theme.palette.primary.main },
                     }}
                   >
                     Ver más
