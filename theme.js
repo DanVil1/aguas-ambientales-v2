@@ -4,16 +4,18 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#yourPrimaryColor',
+      main: '#0f3b68',
     },
     secondary: {
-      main: '#yourSecondaryColor',
+      main: '#yourSecondaryColor', // Update if needed
     },
+    black: {
+      main: '#000000'
+    }
   },
   typography: {
-    fontFamily: 'Your Preferred Font, sans-serif',
+    fontFamily: 'Lato, sans-serif',
   },
-  // Define custom breakpoints if needed for responsiveness
   breakpoints: {
     values: {
       xs: 0,

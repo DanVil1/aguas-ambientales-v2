@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import { useTheme } from '@mui/material/styles';
 
 const sections = [
   { label: 'Home', id: 'home' },
@@ -20,6 +21,7 @@ const sections = [
 ];
 
 export default function Navbar({ onSectionChange }) {
+  const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -45,20 +47,28 @@ export default function Navbar({ onSectionChange }) {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, color: theme.palette.primary.main }}
           >
             My Website
           </Typography>
 
-          {/* Mobile Menu Icon */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          {/* Mobile Header: Title on left, Menu icon on right */}
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', width: '100%' }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, color: theme.palette.primary.main }}
+            >
+              My Website
+            </Typography>
             <IconButton
               size="large"
               aria-label="navigation menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              sx={{ color: theme.palette.primary.main }}
             >
               <MenuIcon />
             </IconButton>
@@ -85,23 +95,13 @@ export default function Navbar({ onSectionChange }) {
                   key={section.id}
                   onClick={() => handleSectionClick(section.id)}
                 >
-                  <Typography textAlign="center">
+                  <Typography textAlign="center" sx={{ color: theme.palette.primary.main }}>
                     {section.label}
                   </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-
-          {/* Mobile Site Title */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            My Website
-          </Typography>
 
           {/* Desktop Navigation Buttons aligned to the right */}
           <Box
