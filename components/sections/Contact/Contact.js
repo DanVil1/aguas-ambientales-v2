@@ -2,8 +2,13 @@
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import SocialMedia from './SocialMedia/SocialMedia';
+import ContactInfo from './ContactInfo/ContactInfo';
+import { useTheme } from '@mui/material/styles';
 
 export default function ContactSection() {
+
+  const theme = useTheme();
+  
   return (
     <Container
       sx={{
@@ -31,13 +36,14 @@ export default function ContactSection() {
             flex: 1,
             maxWidth: { xs: '100%', md: '40%' },
             p: 3,
-            border: '1px solid #ddd',
-            borderRadius: 2,
+            backgroundColor: '#ededed',
+            borderRadius: '31px',
+            boxShadow: '7px 7px 24px #cccccc, -7px -7px 24px #ffffff',
             textAlign: 'center',
           }}
         >
-          <Typography variant="h6" component="h3" gutterBottom>
-            Social Media
+          <Typography variant="h4" component="h3" gutterBottom sx={{ textTransform: 'uppercase', fontWeight: 'bold', color: theme.palette.primary.main }}>
+            Síguenos 
           </Typography>
           {/* Add your social media icons/links here */}
           <Typography variant="body1">
@@ -50,17 +56,18 @@ export default function ContactSection() {
             flex: 1,
             maxWidth: { xs: '100%', md: '40%' },
             p: 3,
-            border: '1px solid #ddd',
-            borderRadius: 2,
+            backgroundColor: '#ededed',
+            borderRadius: '31px',
+            boxShadow: '7px 7px 24px #cccccc, -7px -7px 24px #ffffff',
             textAlign: 'center',
           }}
         >
-          <Typography variant="h6" component="h3" gutterBottom>
-            Contact Information
+          <Typography variant="h4" component="h3" gutterBottom sx={{ textTransform: 'uppercase', fontWeight: 'bold', color: theme.palette.primary.main }}>
+            Contacto
           </Typography>
           {/* Add your contact info here */}
           <Typography variant="body1">
-            [Email, Phone, Address, etc.]
+            <ContactInfo />
           </Typography>
         </Box>
       </Box>
