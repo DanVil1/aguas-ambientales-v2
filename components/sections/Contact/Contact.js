@@ -46,9 +46,7 @@ export default function ContactSection() {
             Síguenos 
           </Typography>
           {/* Add your social media icons/links here */}
-          <Typography variant="body1">
-            <SocialMedia />
-          </Typography>
+          <SocialMedia />
         </Box>
         {/* Contact Information Box */}
         <Box
@@ -66,9 +64,7 @@ export default function ContactSection() {
             Contacto
           </Typography>
           {/* Add your contact info here */}
-          <Typography variant="body1">
-            <ContactInfo />
-          </Typography>
+          <ContactInfo />
         </Box>
       </Box>
     </Container>
