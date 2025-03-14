@@ -1,4 +1,3 @@
-// components/sections/Home/ContactSection.js
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import SocialMedia from './SocialMedia/SocialMedia';
@@ -17,20 +16,19 @@ export default function ContactSection() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '50vh', // ensures the content is centered vertically within at least 50% of viewport height
+        minHeight: '50vh',
       }}
     >
       <Box
         sx={{
           mt: 4,
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' }, // stack on mobile, side by side on desktop
+          flexDirection: { xs: 'column', md: 'row' },
           gap: 4,
           width: '100%',
           justifyContent: 'center',
         }}
       >
-        {/* Social Media Box */}
         <Box
           sx={{
             flex: 1,
@@ -45,10 +43,8 @@ export default function ContactSection() {
           <Typography variant="h4" component="h3" gutterBottom sx={{ textTransform: 'uppercase', fontWeight: 'bold', color: theme.palette.primary.main }}>
             Síguenos 
           </Typography>
-          {/* Add your social media icons/links here */}
           <SocialMedia />
         </Box>
-        {/* Contact Information Box */}
         <Box
           sx={{
             flex: 1,
@@ -63,7 +59,6 @@ export default function ContactSection() {
           <Typography variant="h4" component="h3" gutterBottom sx={{ textTransform: 'uppercase', fontWeight: 'bold', color: theme.palette.primary.main }}>
             Contacto
           </Typography>
-          {/* Add your contact info here */}
           <ContactInfo />
         </Box>
       </Box>
