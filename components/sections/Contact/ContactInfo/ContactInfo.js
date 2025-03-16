@@ -1,4 +1,3 @@
-// components/sections/Home/ContactInfo.js
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';

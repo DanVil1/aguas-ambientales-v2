@@ -1,4 +1,3 @@
-// components/SocialMediaIcons.js
 import React from 'react';
 import { Box, IconButton } from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -17,7 +16,6 @@ export default function SocialMediaIcons() {
         mt: 2,
       }}
     >
-      {/* Facebook */}
       <IconButton
         sx={{
           width: 80,
@@ -55,8 +53,6 @@ export default function SocialMediaIcons() {
       >
         <FacebookIcon sx={{ fontSize: 35, color: '#262626' }} />
       </IconButton>
-
-      {/* Twitter */}
       <IconButton
         sx={{
           width: 80,
@@ -94,8 +90,6 @@ export default function SocialMediaIcons() {
       >
         <TwitterIcon sx={{ fontSize: 35, color: '#262626' }} />
       </IconButton>
-
-      {/* LinkedIn */}
       <IconButton
         sx={{
           width: 80,
@@ -133,8 +127,6 @@ export default function SocialMediaIcons() {
       >
         <LinkedInIcon sx={{ fontSize: 35, color: '#262626' }} />
       </IconButton>
-
-      {/* Instagram Button */}
       <IconButton
         sx={{
           width: 80,
@@ -172,7 +164,6 @@ export default function SocialMediaIcons() {
       >
         <InstagramIcon sx={{ fontSize: 35, color: '#262626', transition: 'transform 0.5s' }} />
       </IconButton>
-
     </Box>
   );
 }

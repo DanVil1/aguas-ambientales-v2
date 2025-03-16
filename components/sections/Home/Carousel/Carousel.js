@@ -1,4 +1,3 @@
-// components/sections/Home/Carousel.js
 import React from 'react';
 import Slider from 'react-slick';
 import { Box, Typography, IconButton, Button } from '@mui/material';
@@ -7,20 +6,16 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-// Import slick-carousel CSS
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-// This component handles the title animation when its slide is active.
 const SlideTitle = ({ children, isActive }) => {
   const [animate, setAnimate] = React.useState(false);
   React.useEffect(() => {
     if (isActive) {
-      // Delay slightly to ensure the slide is fully active.
       const timeout = setTimeout(() => setAnimate(true), 100);
       return () => clearTimeout(timeout);
     } else {
-      // Reset the state when slide becomes inactive.
       setAnimate(false);
     }
   }, [isActive]);
@@ -42,7 +37,6 @@ const SlideTitle = ({ children, isActive }) => {
   );
 };
 
-// Custom Next Arrow component
 function NextArrow(props) {
 
   const { onClick } = props;
@@ -67,7 +61,6 @@ function NextArrow(props) {
   );
 }
 
-// Custom Prev Arrow component
 function PrevArrow(props) {
 
   const { onClick } = props;
@@ -111,10 +104,8 @@ const Carousel = () => {
   };
 
   return (
-    // Full-width container using a CSS trick to span the entire viewport width
     <Box sx={{ width: '100vw', ml: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
       <Slider {...settings}>
-        {/* Slide 1 */}
         <div>
           <Box
             sx={{
@@ -123,7 +114,6 @@ const Carousel = () => {
               position: 'relative',
             }}
           >
-            {/* Background Image with 50% opacity */}
             <Box
               sx={{
                 position: 'absolute',
@@ -138,7 +128,6 @@ const Carousel = () => {
                 zIndex: 0,
               }}
             />
-            {/* Title Box in the Top Left */}
             <Box
               sx={{
                 position: 'absolute',
@@ -152,7 +141,6 @@ const Carousel = () => {
             >
               <SlideTitle isActive={activeSlide === 0}>
                 ESCENARIOS DE PRODUCCIÓN, PURIFICACIÓN, REGENERACIÓN Y RECICLAJE DE AGUAS
-                {/* List of services */}
                 <Box sx={{ mt: 2, pl: 2 }}>
                   <ul style={{ margin: 0, paddingLeft: '1.2rem', listStyle: 'none', color: theme.palette.primary.main }}>
                     {["AWA", "VÓRTICE", "PROYECTOS ESPECIALES"].map((item, index) => (
@@ -163,7 +151,6 @@ const Carousel = () => {
                     ))}
                   </ul>
                 </Box>
-                {/* "Ver más" Button */}
                 <Box sx={{ display: 'flex' }}>
                   <Button
                     variant="contained"
@@ -187,7 +174,6 @@ const Carousel = () => {
             </Box>
           </Box>
         </div>
-        {/* Slide 2 */}
         <div>
           <Box
             sx={{
