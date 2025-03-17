@@ -34,7 +34,7 @@ export default function Home() {
         )}
         {activeSection === 'services' && (
           <section id="services">
-            <ServicesSection />
+            <ServicesSection onSectionChange={setActiveSection} />
           </section>
         )}
         {activeSection === 'solutions' && (
