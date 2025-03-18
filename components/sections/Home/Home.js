@@ -1,4 +1,3 @@
-// components/sections/Home/Home.js
 import React from 'react';
 import { Container } from '@mui/material';
 import Carousel from './Carousel/Carousel';

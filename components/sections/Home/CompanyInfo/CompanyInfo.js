@@ -1,4 +1,3 @@
-// components/sections/Home/CompanyInfo.js
 import React from 'react';
 import { Box, Typography, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
@@ -23,11 +22,10 @@ const CompanyInfo = () => {
 
   return (
     <Box sx={{ pl: { xs: '16px', md: '80px' }, pr: { xs: '16px', md: '80px' }, pt: '20px' }}>
-      {/* Company description with bolded company name */}
       <Typography
         variant="body1"
         sx={{
-          color: theme.palette.black.main, // default text color: black
+          color: theme.palette.black.main,
           fontSize: '18px',
           lineHeight: 1.6,
           mb: 3,
@@ -43,7 +41,6 @@ const CompanyInfo = () => {
         </Box>
         {restText}
       </Typography>
-      {/* Bullet list with check icons and bold first letter */}
       <List sx={{ pl: 2 }}>
         {bulletPoints.map((point, index) => {
           const firstLetter = point.charAt(0);
@@ -60,7 +57,7 @@ const CompanyInfo = () => {
                   mr: 1,
                   color: theme.palette.primary.main,
                   alignSelf: 'baseline',
-                  mt: '4px', // adjust this value as needed
+                  mt: '4px',
                 }}
               >
                 <CheckIcon fontSize="small" />
