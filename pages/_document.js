@@ -1,4 +1,3 @@
-// pages/_document.js
 import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
@@ -10,11 +9,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
-          {/* Favicon */}
           <link rel="icon" href="/images/icons/icon.png" />
-          {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
         </Head>
         <body>
@@ -42,7 +38,6 @@ MyDocument.getInitialProps = async (ctx) => {
     <style
       data-emotion={`${style.key} ${style.ids.join(' ')}`}
       key={style.key}
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: style.css }}
     />
   ));
