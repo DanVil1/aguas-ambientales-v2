@@ -1,11 +1,13 @@
 // components/sections/Services/Services.js
 import React, { useState } from 'react';
-import { Container, Box, Typography, Button, List, ListItem } from '@mui/material';
+import { Container, Box, Typography, Button, List, ListItem, IconButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CheckIcon from '@mui/icons-material/Check';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function ServicesSection({ onSectionChange }) {
+  
   const theme = useTheme();
   const [flipped, setFlipped] = useState(false);
 
@@ -34,7 +36,8 @@ export default function ServicesSection({ onSectionChange }) {
           color: theme.palette.primary.main,
           textAlign: 'center',
           mb: 4,
-          fontFamily: 'Lato, sans-serif'
+          fontFamily: 'Lato, sans-serif',
+          fontWeight: 'bold'
         }}
       >
         Servicios
@@ -43,7 +46,7 @@ export default function ServicesSection({ onSectionChange }) {
       {/* First Paragraph */}
       <Typography
         variant="body1"
-        sx={{ textAlign: 'justify', mb: 3, fontSize: { xs: '16px', md: '18px' } }}
+        sx={{ textAlign: 'center', mb: 3, fontSize: { xs: '16px', md: '18px' } }}
       >
         Proponemos la prestación de un servicio competente, que desarrolla y ejecuta nuestras mejores soluciones.
       </Typography>
@@ -54,8 +57,8 @@ export default function ServicesSection({ onSectionChange }) {
           <Box
             sx={{
               position: 'relative',
-              width: '300px',
-              height: '200px',
+              width: '500px',
+              height: '250px',
               transformStyle: 'preserve-3d',
               transition: 'transform 0.6s',
               transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
@@ -82,9 +85,24 @@ export default function ServicesSection({ onSectionChange }) {
             >
               <SettingsIcon sx={{ fontSize: 40, color: theme.palette.primary.main, mb: 1 }} />
               <Typography variant="h6" sx={{ mb: 1 }}>
-                CONCESION
+                CONCESIÓN
               </Typography>
-              <Button variant="contained" onClick={handleFlip}>
+              <Button
+                onClick={handleFlip}
+                variant="contained"
+                sx={{
+                  mt: 2,
+                  backgroundColor: theme.palette.primary.main,
+                  color: '#fff',
+                  borderRadius: '9999px',
+                  px: 3,
+                  py: 1,
+                  textTransform: 'none',
+                  boxShadow: 'none',
+                  fontWeight: '600',
+                  '&:hover': { backgroundColor: '#fff', color: theme.palette.primary.main },
+                }}
+              >
                 Ver
               </Button>
             </Box>
@@ -109,25 +127,49 @@ export default function ServicesSection({ onSectionChange }) {
                 p: 2,
               }}
             >
-              <List sx={{ width: '100%' }}>
+              {/* Back arrow icon at the top right */}
+              <IconButton
+                onClick={handleFlipBack}
+                sx={{
+                  position: 'absolute',
+                  top: 8,
+                  right: 8,
+                }}
+              >
+                <ArrowBackIcon sx={{ color: theme.palette.primary.main }} />
+              </IconButton>
+              
+              <List sx={{ width: '100%', mt: 2 }}>
                 <ListItem disableGutters sx={{ display: 'flex', alignItems: 'center' }}>
                   <CheckIcon sx={{ mr: 1, color: theme.palette.primary.main }} />
-                  <Typography variant="body1" sx={{ fontSize: { xs: '16px', md: '18px' } }}>
+                  <Typography variant="body2">
                     Producción, Purificación, Regeneración y Reciclaje de Aguas.
                   </Typography>
                 </ListItem>
                 <ListItem disableGutters sx={{ display: 'flex', alignItems: 'center' }}>
                   <CheckIcon sx={{ mr: 1, color: theme.palette.primary.main }} />
-                  <Typography variant="body1" sx={{ fontSize: { xs: '16px', md: '18px' } }}>
+                  <Typography variant="body2">
                     Generación y Explotación de Energías Alternativas Limpias.
                   </Typography>
                 </ListItem>
               </List>
-              <Button variant="contained" onClick={handleNavigate} sx={{ mt: 2 }}>
-                Ver Mas
-              </Button>
-              <Button variant="text" onClick={handleFlipBack} sx={{ mt: 1 }}>
-                Volver
+              <Button
+                onClick={handleNavigate}
+                variant="contained"
+                sx={{
+                  mt: 2,
+                  backgroundColor: theme.palette.primary.main,
+                  color: '#fff',
+                  borderRadius: '9999px',
+                  px: 3,
+                  py: 1,
+                  textTransform: 'none',
+                  boxShadow: 'none',
+                  fontWeight: '600',
+                  '&:hover': { backgroundColor: '#fff', color: theme.palette.primary.main },
+                }}
+              >
+                Ver más
               </Button>
             </Box>
           </Box>
