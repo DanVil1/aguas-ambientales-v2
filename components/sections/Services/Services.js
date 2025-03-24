@@ -53,12 +53,12 @@ export default function ServicesSection({ onSectionChange }) {
 
       {/* Centered Flip Card */}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-        <Box sx={{ perspective: '1000px' }}>
+        <Box sx={{ perspective: '1000px', width: { xs: '100%', md: '500px' } }}>
           <Box
             sx={{
               position: 'relative',
-              width: '500px',
-              height: '250px',
+              width: { xs: '100%', md: '500px' },
+              height: { xs: '350px', md: '250px' },
               transformStyle: 'preserve-3d',
               transition: 'transform 0.6s',
               transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
