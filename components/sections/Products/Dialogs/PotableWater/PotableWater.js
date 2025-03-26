@@ -43,7 +43,6 @@ export default function AguaPotableDialog({ open, onClose }) {
         <Typography variant="body2" gutterBottom>
           Soluciona problemas indeseables de olor, color y sabor para aguas subterráneas y superficiales.
         </Typography>
-        {/* Add additional content as needed */}
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary">

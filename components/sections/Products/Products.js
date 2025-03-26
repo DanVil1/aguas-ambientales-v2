@@ -4,10 +4,6 @@ import {
   Typography,
   Box,
   Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
   IconButton,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
