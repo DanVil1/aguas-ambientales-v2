@@ -11,8 +11,17 @@ import ProyectosEspecialesDialog from './Dialogs/SpecialProjects/SpecialProjects
 import AguaPotableDialog from './Dialogs/PotableWater/PotableWater';
 import AguaResidualDialog from './Dialogs/ResidualWater/ResidualWater';
 import SolarDialog from './Dialogs/Solar/Solar';
+import { useTheme } from '@mui/material/styles';
+import WaterIcon from '@mui/icons-material/Water';
+import RecyclingIcon from '@mui/icons-material/Recycling';
+import EolicDialog from './Dialogs/Eolic/Eolic';
+import EgealDialog from './Dialogs/Egeal/Egeal';
+import MicroHidraulicDialog from './Dialogs/MicroHidraulic/MicroHidraulic';
+import GreenHydrogeneDialog from './Dialogs/GreenHydrogene/GreenHydrogene';
+import HibridDialog from './Dialogs/Hibrid/Hibrid';
 
 export default function ProductsSection() {
+  const theme = useTheme();
   const [openDialog, setOpenDialog] = useState(null);
 
   const handleOpenDialog = (dialogType) => {
@@ -25,10 +34,30 @@ export default function ProductsSection() {
 
   return (
     <Container sx={{ py: 4 }}>
-      <Typography variant="h2" component="h1" gutterBottom>
+      <Typography
+        variant="h4"
+        component="h1"
+        gutterBottom
+        sx={{
+          textTransform: 'uppercase',
+          color: theme.palette.primary.main,
+          textAlign: 'center',
+          mb: 4,
+          fontFamily: 'Lato, sans-serif',
+          fontWeight: 'bold'
+        }}
+      >
         PRODUCTOS
       </Typography>
-      <Typography variant="body1" gutterBottom>
+      <Typography
+        variant="body1"
+        sx={{
+          textAlign: 'justify',
+          mb: 2,
+          fontSize: { xs: '16px', md: '18px' },
+          '& strong': { color: theme.palette.primary.main }
+        }}
+      >
         En la ejecución de proyectos ambientales y sostenibles, involucrando la integración de la producción,
         purificación, regeneración y el reciclaje de aguas, con la generación y explotación de energías
         alternativas limpias; así como la recuperación de subproductos, y reciclaje de residuos, contribuimos
@@ -38,53 +67,77 @@ export default function ProductsSection() {
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 3, mt: 3 }}>
         {/* First Box */}
         <Box sx={{ flex: 1, border: '1px solid', borderColor: 'grey.300', p: 2 }}>
-          <Typography variant="h5" gutterBottom>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontWeight: 'bold',
+              color: theme.palette.primary.main,
+              textAlign: 'center'
+            }}
+          >
             ESCENARIOS DE PRODUCCIÓN, PURIFICACIÓN, REGENERACIÓN Y RECICLAJE DE AGUAS
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="caption" sx={{ textAlign: 'center', display: 'block' }}>
             Construcción - Integración - Instalación - Montaje - Operación - Mantenimiento
           </Typography>
-          <Typography variant="body1" gutterBottom sx={{ mt: 1 }}>
+          <Typography
+            variant="body2"
+            gutterBottom
+            sx={{
+              mt: 1,
+              textAlign: 'justify'
+            }}
+          >
             Sabemos cómo hacer posible el ciclo completo del agua, desde la potabilización para consumo humano,
             transitando por su purificación, luego su utilización, hasta la regeneración para su reciclaje.
           </Typography>
           <Box
             sx={{
               display: 'flex',
+              flexDirection: 'column',
               justifyContent: 'center',
+              alignItems: 'center',
               gap: 2,
-              flexWrap: 'wrap',
               mt: 3,
             }}
           >
-            <Box>
-              <Typography variant="body1">AGUA POTABLE</Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Typography variant="body1" sx={{ fontWeight: 'bold', color: theme.palette.primary.main }}>
+                AGUA POTABLE
+              </Typography>
               <Button
                 variant="contained"
                 color="primary"
+                startIcon={<WaterIcon />}
                 onClick={() => handleOpenDialog('AGUA_POTABLE')}
               >
-                Ver Detalles
+                VÓRTICE
               </Button>
             </Box>
-            <Box>
-              <Typography variant="body1">AGUA RESIDUAL</Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 1 }}>
+              <Typography variant="body1" sx={{ fontWeight: 'bold', color: theme.palette.primary.main }}>
+                AGUA RESIDUAL
+              </Typography>
               <Button
                 variant="contained"
                 color="primary"
+                startIcon={<RecyclingIcon />}
                 onClick={() => handleOpenDialog('AGUA_RESIDUAL')}
               >
-                Ver Detalles
+                AWA
               </Button>
             </Box>
-            <Box>
-              <Typography variant="body1">PROYECTOS ESPECIALES</Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 1 }}>
+              <Typography variant="body1" sx={{ fontWeight: 'bold', color: theme.palette.primary.main }}>
+                PROYECTOS ESPECIALES
+              </Typography>
               <Button
                 variant="contained"
                 color="primary"
                 onClick={() => handleOpenDialog('PROYECTOS_ESPECIALES')}
               >
-                Ver Detalles
+                Ver Todos
               </Button>
             </Box>
           </Box>
@@ -92,25 +145,45 @@ export default function ProductsSection() {
 
         {/* Second Box */}
         <Box sx={{ flex: 1, border: '1px solid', borderColor: 'grey.300', p: 2 }}>
-          <Typography variant="h5" gutterBottom>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontWeight: 'bold',
+              color: theme.palette.primary.main,
+              textAlign: 'center'
+            }}
+          >
             ESTACIONES DE GENERACIÓN Y EXPLOTACIÓN DE ENERGÍAS ALTERNATIVAS LIMPIAS EGEAL
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="caption" sx={{ textAlign: 'center', display: 'block' }}>
             Construcción de Obras Civiles - Logística - Dotación - Integración - Instalación y Montaje -
             Operación - Mantenimiento
           </Typography>
-          <Typography variant="body1" gutterBottom sx={{ mt: 1 }}>
+          <Typography
+            variant="body2"
+            gutterBottom
+            sx={{
+              mt: 1,
+              textAlign: 'justify'
+            }}
+          >
             Sacamos sorprendentes ganancias de la fuerte incidencia del sol, el viento, y de la abundancia de
             caudales y cuerpos de agua sobre el territorio colombiano.
           </Typography>
-          <Typography variant="body1">
+          <Typography
+            variant="body2"
+            sx={{
+              textAlign: 'justify'
+            }}
+          >
             Gestionamos la producción de exclusivos componentes, dispositivos, equipos, maquinaria y materiales
             de alta tecnología en una alianza estratégica con nuestros socios especialistas desarrolladores
             y fabricantes, líderes en innovación, que nos permiten integrar un valor agregado en nuestros productos
             y servicios.
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
-            <IconButton color="primary">
+            <IconButton color="primary" onClick={() => handleOpenDialog('EGEAL')}>
               <SearchIcon />
             </IconButton>
           </Box>
@@ -134,12 +207,15 @@ export default function ProductsSection() {
         </Box>
       </Box>
 
-      {/* Render individual dialogs based on state */}
       <AguaPotableDialog open={openDialog === 'AGUA_POTABLE'} onClose={handleCloseDialog} />
       <AguaResidualDialog open={openDialog === 'AGUA_RESIDUAL'} onClose={handleCloseDialog} />
       <ProyectosEspecialesDialog open={openDialog === 'PROYECTOS_ESPECIALES'} onClose={handleCloseDialog} />
+      <EgealDialog open={openDialog === 'EGEAL'} onClose={handleCloseDialog} />
       <SolarDialog open={openDialog === 'SOLAR'} onClose={handleCloseDialog} />
-      {/* Similarly, you can create and render dialogs for EOLICA, MICRO_HIDRAULICA, HIDROGENO, and HIBRIDA */}
+      <EolicDialog open={openDialog === 'EOLICA'} onClose={handleCloseDialog} />
+      <MicroHidraulicDialog open={openDialog === 'MICRO_HIDRAULICA'} onClose={handleCloseDialog} />
+      <GreenHydrogeneDialog open={openDialog === 'HIDROGENO'} onClose={handleCloseDialog} />
+      <HibridDialog open={openDialog === 'HIBRIDA'} onClose={handleCloseDialog} />
     </Container>
   );
 }
