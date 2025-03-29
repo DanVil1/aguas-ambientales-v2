@@ -64,8 +64,8 @@ export default function ProductsSection() {
         sólidamente con nuestros clientes, en optimizar su inversión a largo plazo con:
       </Typography>
 
-      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 3, mt: 3 }}>
-        {/* First Box */}
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3, mt: 3 }}>
+      {/* First Box */}
         <Box sx={{ flex: 1, border: '1px solid', borderColor: 'grey.300', p: 2 }}>
           <Typography
             variant="h6"
@@ -147,14 +147,23 @@ export default function ProductsSection() {
         <Box sx={{ flex: 1, border: '1px solid', borderColor: 'grey.300', p: 2 }}>
           <Typography
             variant="h6"
-            gutterBottom
             sx={{
               fontWeight: 'bold',
               color: theme.palette.primary.main,
-              textAlign: 'center'
+              textAlign: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
           >
-            ESTACIONES DE GENERACIÓN Y EXPLOTACIÓN DE ENERGÍAS ALTERNATIVAS LIMPIAS EGEAL
+            <span>ESTACIONES DE GENERACIÓN Y EXPLOTACIÓN DE ENERGÍAS ALTERNATIVAS LIMPIAS EGEAL</span>
+            <IconButton
+              color="primary"
+              onClick={() => handleOpenDialog('EGEAL')}
+              sx={{ p: 0, ml: 1 }}
+            >
+              <SearchIcon />
+            </IconButton>
           </Typography>
           <Typography variant="caption" sx={{ textAlign: 'center', display: 'block' }}>
             Construcción de Obras Civiles - Logística - Dotación - Integración - Instalación y Montaje -
@@ -182,11 +191,7 @@ export default function ProductsSection() {
             y fabricantes, líderes en innovación, que nos permiten integrar un valor agregado en nuestros productos
             y servicios.
           </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
-            <IconButton color="primary" onClick={() => handleOpenDialog('EGEAL')}>
-              <SearchIcon />
-            </IconButton>
-          </Box>
+
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap', mt: 2 }}>
             <Button variant="contained" onClick={() => handleOpenDialog('SOLAR')}>
               Solar
